@@ -18,14 +18,19 @@ public class ScannerQuiz {
 		 */
 		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("이름: ");
 		String name = sc.next();
+		
 		System.out.print("나이: ");
 		int age = sc.nextInt();
-		int scince = 2022 -age;
-		System.out.printf("이름: %s%n나이: %d세%n출생년도: %d년%n", name, age, scince);
-		sc.close();
+		int scince = 2023 -age;
+		
+		System.out.printf("이름: %s%n나이: %d세%n출생년도: %d년%n"
+				, name, age, scince);
 		System.out.println("--------------------");
-		System.out.println("이름: "+ name +"\n나이: "+ age + "\n출생년도: "+scince+"년");
+		System.out.println("이름: "+ name +"\n나이: "+ age + 
+				"세" + "\n출생년도: "+scince+"년");
+		sc.close();
 	}
 }
