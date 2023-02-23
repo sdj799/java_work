@@ -7,12 +7,12 @@ public class ForExample {
 	public static void main(String[] args) {
 		
 //		int i = 1;
-		int total = 0;
 //		while(i <= 10) {
 //			total += i;
 //			i++;
 //		}
 		
+		int total = 0;
 		for(int i=1; i<=10; i++) { //괄호안에 begin,end,step이 한번에 들어간다
 			total += i;
 		}
@@ -50,6 +50,12 @@ public class ForExample {
 			System.out.print(n+"x");
 			result *= n;
 		}
+		/*
+		 for(int n=num; n>=1; n--) {
+		 		result *= n;
+		 }
+		 */
 		System.out.println("="+result);
+		sc.close();
 	}
 }
