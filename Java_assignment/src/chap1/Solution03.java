@@ -46,6 +46,8 @@ public class Solution03 {
 			}
 			System.out.println(scores[i] + "\t"+ rank);
 		}
+		
+		sc.close();
 	}
 
 }

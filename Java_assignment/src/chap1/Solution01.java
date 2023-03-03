@@ -33,6 +33,7 @@ public class Solution01 {
 		
 		System.out.println("가장 큰 값: " + max);
 		
+		sc.close();
 	}
 
 }

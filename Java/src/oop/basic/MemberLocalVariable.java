@@ -18,8 +18,21 @@ package oop.basic;
 
 public class MemberLocalVariable {
 
+	int a; //멤버변수(객체의 멤버가 되는 변수(필드))
+	
+	void printNumber(int c) {//매개 변수(지역변수)
+		int b = 1; //지역변수(local variable) 직접 초기화를 진행
+		System.out.println("멤버변수 a: "+ a);
+		System.out.println("지역변수 b: "+ b);
+		System.out.println("매개변수 c: "+ c);
+	}
+	
 	public static void main(String[] args) {
 
+		
+		MemberLocalVariable m = new MemberLocalVariable();
+		m.printNumber(4);
+		
 		
 	}
 

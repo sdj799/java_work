@@ -51,6 +51,7 @@ public class BreakExample2 {
 			}
 
 		}
+		sc.close();
 	}
 
 }
