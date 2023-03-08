@@ -82,7 +82,7 @@ public class MainClass {
 		
 		Car c = new Car("g80");
 		
-		c.setSpeed(50);
+		c.setSpeed(30);
 		System.out.println("---------------------------");
 		c.engineStart();
 		System.out.println("---------------------------");

@@ -7,6 +7,6 @@ public class Person {
 	
 	String info(String name, int age) {
 		
-		return "이름: "+ name + ", 나이: "+age;
+		return "이름: "+ name + ", 나이: "+age + "세";
 	}
 }

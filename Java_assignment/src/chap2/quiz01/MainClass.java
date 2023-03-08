@@ -46,9 +46,9 @@ public class MainClass {
 		Employee park = new Employee();
 		park.departments = "영업부";
 		
-		System.out.printf("%s세 학번: %s\n", hong.info("홍길동", 30), hong.studentId);
-		System.out.printf("%s세 과목: %s\n", kim.info("김철수", 50), kim.subject);
-		System.out.printf("%s세 부서: %s\n", park.info("박영희", 25), park.departments);
+		System.out.printf("%s 학번: %s\n", hong.info("홍길동", 30), hong.studentId);
+		System.out.printf("%s 과목: %s\n", kim.info("김철수", 50), kim.subject);
+		System.out.printf("%s 부서: %s\n", park.info("박영희", 25), park.departments);
 
 	}
 
