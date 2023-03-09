@@ -21,13 +21,16 @@ public abstract class HeadStore {
 	
 	public int i;
 	
-	public void orderWaterMelon() {
-		System.out.println("수박 주스의 가격은 4000원 입니다.");
+	public HeadStore() {
+		System.out.println("HeadStore의 생성자!");
 	}
 	
 	public abstract void orderApple();
 	public abstract void orderBanana();
 	public abstract void orderGrape();
 	
+	public void orderWaterMelon() {
+		System.out.println("수박 주스의 가격은 4000원 입니다.");
+	}
 	
 }

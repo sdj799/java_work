@@ -21,8 +21,10 @@ public class MainClass {
 		Shape rec = new Rect("5정사각형", 5);
 		Shape cir = new Circle("4원", 4);
 		
-		System.out.printf("%s의 넓이는 %.2f입니다.\n", rec.getName(),rec.getArea());
-		System.out.printf("%s의 넓이는 %.2f입니다.", cir.getName(),cir.getArea());
+		System.out.printf("%s의 넓이는 %.2f입니다.\n"
+				, rec.getName(),rec.getArea());
+		System.out.printf("%s의 넓이는 %.2f입니다."
+				, cir.getName(),cir.getArea());
 	}
 
 }
