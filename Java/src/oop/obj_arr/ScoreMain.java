@@ -28,9 +28,11 @@ public class ScoreMain {
 		
 		
 		for(int i=0; i<score.length; i++) {
+			System.out.println(" '그만'을 입력하시면 종료됩니다.");
 			System.out.print("이름입력: ");
 			String name = sc.next();
 			if(name.equals("그만")) {
+				System.out.println("입력을 종료합니다.");
 				break;
 			}
 			Score num = new Score();
@@ -51,9 +53,9 @@ public class ScoreMain {
 			System.out.println("-----------------");
 		}
 		
-		for(int n=0; n<score.length; n++) {
+		for(Score s : score) {
 			try {
-				score[n].scoreInfo();
+				s.scoreInfo();
 			} catch(Exception e) {
 				break;
 			}
