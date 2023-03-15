@@ -24,8 +24,7 @@ public class Solution01 {
 		int[] nums = new int[10];
 			for(int i=0; i<10; i++) {
 			System.out.printf("정수%d: ", i+1);
-			int n = sc.nextInt();
-			nums[i] = n;
+			nums[i] = sc.nextInt();
 			if(max<nums[i]) {
 				max=nums[i];
 			}
