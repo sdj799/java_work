@@ -1,5 +1,9 @@
 package etc.api.io.stream;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FileQuiz {
@@ -18,9 +22,35 @@ public class FileQuiz {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
 		
+		System.out.print("파일명: ");
+		String file = sc.nextLine();
 		
-		
+		try {
+			fis = new FileInputStream("C:\\Work\\file\\" + file + ".txt");
+			fos = new FileOutputStream("C:\\Work\\file\\" + file + ".txt");
+			
+			int result;
+			byte[] arr = new byte[100];
+			
+			while((result = fis.read(arr)) != -1) {
+				fos.write(arr, 0, result);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("파일이나 경로를 찾을 수 없습니다.");
+		} catch (IOException e) {
+			System.out.println("파일 처리 중에 에러가 발생했습니다.");
+		} finally {
+			try {
+				fos.close();
+				fis.close();
+			} catch (Exception e) {
+				System.out.println("close과정에서 에러가 발생!");
+				e.printStackTrace();
+			}
+		}
 		
 		sc.close();
 	}
