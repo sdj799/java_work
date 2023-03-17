@@ -2,7 +2,15 @@ package chap2.quiz01;
 
 public class Employee extends Person {
 
-	String departments;
+	private String departments;
+
+	public String getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(String departments) {
+		this.departments = departments;
+	}
 
 	@Override
 	String info(String name, int age) {

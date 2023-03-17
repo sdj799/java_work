@@ -38,17 +38,17 @@ public class MainClass {
 		 */
 		
 		Student hong = new Student();
-		hong.studentId = "a001";
+		hong.setStudentId("a001");
 		
 		Teacher kim = new Teacher();
-		kim.subject = "수학";
+		kim.setSubject("수학");
 		
 		Employee park = new Employee();
-		park.departments = "영업부";
+		park.setDepartments("영업부");
 		
-		System.out.printf("%s 학번: %s\n", hong.info("홍길동", 30), hong.studentId);
-		System.out.printf("%s 과목: %s\n", kim.info("김철수", 50), kim.subject);
-		System.out.printf("%s 부서: %s\n", park.info("박영희", 25), park.departments);
+		System.out.printf("%s 학번: %s\n", hong.info("홍길동", 30), hong.getStudentId());
+		System.out.printf("%s 과목: %s\n", kim.info("김철수", 50), kim.getSubject());
+		System.out.printf("%s 부서: %s\n", park.info("박영희", 25), park.getDepartments());
 
 	}
 

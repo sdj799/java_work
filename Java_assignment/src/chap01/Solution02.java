@@ -1,4 +1,4 @@
-package chap1;
+package chap01;
 
 public class Solution02 {
 

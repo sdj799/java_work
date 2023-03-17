@@ -8,22 +8,20 @@ public class Car {
 	private char mode = 'P';
 	private boolean start = false;
 	
-	public String getModel() {
-		return model;
-	}
-
-
-	public void setModel(String model) {
+	public Car(String model) {
 		this.model = model;
+		System.out.println("모델명: " + this.model);
 	}
-
-
+	
 	public int getSpeed() {
 		return speed;
 	}
 
-
 	public void setSpeed(int speed) {
+		if(speed < 0 || speed > 200) {
+			System.out.println("잘못된 속도 입니다.");
+			return;
+		}
 		if(!start) {
 			System.out.println("시동이 걸려있지 않은 상태라면 속도를 지정할 수 없습니다.");
 			return;
@@ -76,11 +74,11 @@ public class Car {
 		this.start = start;
 	}
 
-	void engineStart() {
+	public void engineStart() {
 		System.out.println("시동버튼을 눌렀습니다.");
 		this.injectGasoline();
 		this.injectOil();
-		start = true;
+		this.start = true;
 		this.moveCylinder();
 		System.out.println("시동이 걸렸습니다.");
 	}
@@ -97,24 +95,17 @@ public class Car {
 			System.out.println("실린더가 움직이지 않습니다.");
 		}
 	}
-	void engineStop() {
+	public void engineStop() {
 		if(this.speed>0) {
 			System.out.println("주행 중에는 시동을 끌 수 없습니다.");
 			return;
-		} else if(this.speed==0) {
-			if(mode != 'P') {
+		}
+		if(mode != 'P') {
 				System.out.println("P 모드로 변속기를 변경하세요.");
 				return;
-			}
 		}
-		start = false;
+		this.start = false;
 		System.out.println("시동이 꺼졌습니다.");
 	}
-	
-	public Car(String model) {
-		this.model = model;
-	}
-	
-	
 	
 }
