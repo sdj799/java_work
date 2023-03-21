@@ -10,8 +10,6 @@ public class MyCart {
 	public MyCart(int money) {
 		this.money = money;
 	}
-
-
 	/*
     - public void buy(모든 상품을 전달할 수 있는 매개변수)
 
@@ -28,8 +26,7 @@ public class MyCart {
 		money -= p.price;
 		add(p);
 	}
-
-
+	
 	/*
     - private void add(모든 상품을 받을 수 있도록 선언)
 
