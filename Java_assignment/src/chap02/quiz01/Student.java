@@ -1,4 +1,4 @@
-package chap2.quiz01;
+package chap02.quiz01;
 
 public class Student extends Person {
 

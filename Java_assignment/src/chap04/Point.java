@@ -1,4 +1,4 @@
-package collection.list;
+package chap04;
 
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +16,6 @@ public class Point {
 		System.out.println("================================================================");
 	}
 
-
 	//프로그램 메뉴 정보를 보여줄 메서드
 	public int menuInfo() {
 		System.out.println("\n*** 성적 관리 프로그램 ***");
@@ -33,7 +32,7 @@ public class Point {
 	}
 
 	//1. 학생의 성적 정보를 입력할 메서드
-	public void inputPoints(???) {
+	public void inputPoints(List<Student> sList) {
 		/*
 		 1. 학생 객체를 1개 생성합니다.
 		 2. 학생 객체에 속성값을 설정하는 메서드들을 호출해야 합니다.
@@ -41,11 +40,13 @@ public class Point {
 		 4. 저장 완료 메세지를 호출하세요.
 		 ex) XXX님의 성적 정보가 정상적으로 입력되었습니다.
 		 */
-		
+		Student s = new Student();
+		sList.add(s);
+		System.out.println(s.getName()+"님의 성적 정보가 정상적으로 입력되었습니다.");
 	}
 
 	//2. 전체 학생들의 성적 정보를 출력할 메서드
-	public void showAllPoints(???) { //학생 객체들이 들어있는 리스트가 와야죠?
+	public void showAllPoints(List<Student> sList) { //학생 객체들이 들어있는 리스트가 와야죠?
 
 		/*
 		 1. 리스트 안에 들어있는 학생 객체들의 정보를
@@ -57,28 +58,41 @@ public class Point {
 
 		 3. 우리 반 평균을 가장 아랫부분에 출력해야 합니다.
 		 */
-		
-		
-
+		double classAvg = 0;
+		showPointUI();
+		for(Student s : sList) {
+			s.outputStuInfo();
+			classAvg += s.getAverage();
+		}
+		System.out.println("우리반 평균: " + classAvg/sList.size());
 	}
 
 	//3. 개별 성적 조회 로직을 처리할 메서드
-	
+
 	public void searchPoint(List<Student> students) {
 		System.out.println("성적을 조회할 학생의 학번을 입력하세요.");
 		System.out.print("> ");
 		String stuNum = sc.next();
-		
+
 		/*
 		 1. 입력받은 학번과 일치하는 학생 객체를 리스트에서 찾아내어
 		  그 학생의 성적 정보만 출력합니다.
 		 2. 찾는 학번이 존재하지 않는다면 검색하지 못했다는
 		  메세지를 출력해 주세요.
 		 */
-		
-		
+		boolean flag = false;
+		for(Student s : students) {
+			if(s.getStuId().equals(stuNum)) {
+				showPointUI();
+				s.outputStuInfo();
+				flag = true;
+				break;
+			}
+		} if (!flag) {
+			System.out.println("조회하실 학번의 정보가 없습니다.");
+		}
 	}
-	
+
 	//4. 학생의 개인 성적 정보를 수정하는 메서드
 	public void modifyPoint(List<Student> students) {
 		/*
@@ -88,14 +102,39 @@ public class Point {
 		  수정을 진행합니다.
 		  점수를 수정했다면 그 학생의 총점, 평균, 학점도 
 		  새롭게 계산해 주셔야 합니다.
-		  
+
 		 - 찾는 학번이 없을 시 검색하지 못했다는 메세지를 출력해 주세요.
 		 */
-		
-		
-		
+		System.out.println("성적을 수정할 학생의 학번을 입력하세요.");
+		System.out.print("> ");
+		String stuNum = sc.next();
+		int i=0;
+		for(Student s : students) {
+			if(s.getStuId().equals(stuNum)) {
+				break;
+			}
+			i++;
+		}
+		if(i==students.size()) {
+			System.out.println("조회하실 학번의 정보가 없습니다.");
+			return;
+		}
+		System.out.print("국어점수: ");
+		int kor = sc.nextInt();
+		students.get(i).setKor(kor); 
+		System.out.print("영어점수: ");
+		int eng = sc.nextInt();
+		students.get(i).setEng(eng);
+		System.out.print("수학점수: ");
+		int math = sc.nextInt();
+		students.get(i).setMath(math);
+		int total = kor + eng + math;
+		students.get(i).setTotal(total);
+		double avg = (kor + eng + math)/3.0;
+		students.get(i).setAverage(avg);
+
 	}
-	
+
 	//5. 학생 정보를 삭제하는 메서드
 	public void deletePoint(List<Student> students) {
 		/*
@@ -104,24 +143,39 @@ public class Point {
 		  (리스트에서 해당 객체의 주소값 없애기)
 		  학생 정보를 삭제할 때 "XXX님의 정보를 삭제합니다.[Y / N]"
 		  를 출력하셔서 한 번 더 삭제 여부를 확인해 주세요.
-		  
+
 		 - 학생이 없다면 없다고도 출력해 주세요.
 		 */
-		
-		
-	}
-	
-	
-	
-	
-	
+		System.out.println("삭제할 학생의 학번을 입력하세요.");
+		System.out.print("> ");
+		String stuNum = sc.next();
+		int i=0;
+		for(Student s : students) {
+			if(s.getStuId().equals(stuNum)) {
+				break;
+			}
+			i++;
+		}
+		if(i==students.size()) {
+			System.out.println("조회하실 학번의 정보가 없습니다.");
+			return;
+		}
+		System.out.println(students.get(i).getName() + "님의 정보를 삭제합니다.[Y / N]");
+		System.out.print(">");
+		String ox = sc.next();
+		if(ox.equals("y") || ox.equals("Y") || ox.equals("ㅕ")) {
+			students.remove(i);
+			System.out.println("삭제하였습니다.");
+		} else if(ox.equals("n") || ox.equals("N") || ox.equals("ㅜ")) {
+			System.out.println("삭제를 취소합니다.");
+			return;
+		}
 
-	
+	}
+
 	public void close() {
 		sc.close();
 	}
-	
-
 
 }
 

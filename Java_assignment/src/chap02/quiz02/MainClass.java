@@ -1,4 +1,4 @@
-package chap2.quiz02;
+package chap02.quiz02;
 
 public class MainClass {
 

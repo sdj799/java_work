@@ -41,9 +41,6 @@ public class MyCart {
     - 모든 로직이 완료되면 info() 메서드를 호출합니다.
 	 */
 	private void add(Product p) {
-		cart[i] = p;
-		i++;
-		System.out.println(p.name + "을 구입하였습니다.");
 		if(i >= cart.length) {
 			Product[] temp = new Product[i*2];
 			for(int n = 0; n<cart.length; n++) {
@@ -52,6 +49,9 @@ public class MyCart {
 			cart = temp;
 			temp = null;
 		}
+		cart[i] = p;
+		i++;
+		System.out.println(p.name + "을 구입하였습니다.");
 		info();
 	}
 
@@ -73,11 +73,10 @@ public class MyCart {
 				System.out.print(cart[n].name + " ");
 				count += cart[n].price;
 			} catch (Exception e) {
-				
+				break;
 			}
 		}
-		System.out.println("\n모든 물건들의 합한 가격: " + count);
-		System.out.println("남은 금액: " + (money));
-		System.out.println();
+		System.out.println("\n모든 물건들의 합한 가격: " + count + "원");
+		System.out.println("남은 금액: " + (money) + "원");
 	}
 }

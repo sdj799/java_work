@@ -1,6 +1,7 @@
 package etc.collection.list;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ListCompare {
@@ -14,7 +15,7 @@ public class ListCompare {
 		 */
 		
 		List<Integer> array = new ArrayList<>();
-		List<Integer> linked = new ArrayList<>();
+		LinkedList<Integer> linked = new LinkedList<>();
 		
 		for(int i=0; i<1000000; i++) {
 			array.add(i);
