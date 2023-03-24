@@ -70,9 +70,6 @@ public class Point {
 	//3. 개별 성적 조회 로직을 처리할 메서드
 
 	public void searchPoint(List<Student> students) {
-		System.out.println("성적을 조회할 학생의 학번을 입력하세요.");
-		System.out.print("> ");
-		String stuNum = sc.next();
 
 		/*
 		 1. 입력받은 학번과 일치하는 학생 객체를 리스트에서 찾아내어
@@ -80,17 +77,16 @@ public class Point {
 		 2. 찾는 학번이 존재하지 않는다면 검색하지 못했다는
 		  메세지를 출력해 주세요.
 		 */
-		boolean flag = false;
-		for(Student s : students) {
-			if(s.getStuId().equals(stuNum)) {
-				showPointUI();
-				s.outputStuInfo();
-				flag = true;
-				break;
-			}
-		} if (!flag) {
-			System.out.println("조회하실 학번의 정보가 없습니다.");
+		Student stu = findInstance("조회", students);
+		if(stu != null) {
+			System.out.printf("%s님의 성적 정보를 출력합니다.\n"
+					, stu.getName());
+			showPointUI();
+			stu.outputStuInfo();
+		} else {
+			System.out.println("입력한 학번과 일치하는 학생 정보가 없습니다.");
 		}
+		
 	}
 
 	//4. 학생의 개인 성적 정보를 수정하는 메서드
@@ -119,19 +115,30 @@ public class Point {
 			System.out.println("조회하실 학번의 정보가 없습니다.");
 			return;
 		}
-		System.out.print("국어점수: ");
-		int kor = sc.nextInt();
-		students.get(i).setKor(kor); 
-		System.out.print("영어점수: ");
-		int eng = sc.nextInt();
-		students.get(i).setEng(eng);
-		System.out.print("수학점수: ");
-		int math = sc.nextInt();
-		students.get(i).setMath(math);
-		int total = kor + eng + math;
-		students.get(i).setTotal(total);
-		double avg = (kor + eng + math)/3.0;
-		students.get(i).setAverage(avg);
+		while(true) {
+			try {
+				System.out.print("국어점수: ");
+				int kor = sc.nextInt();
+				students.get(i).setKor(kor); 
+				System.out.print("영어점수: ");
+				int eng = sc.nextInt();
+				students.get(i).setEng(eng);
+				System.out.print("수학점수: ");
+				int math = sc.nextInt();
+				students.get(i).setMath(math);
+				int total = kor + eng + math;
+				students.get(i).setTotal(total);
+				double avg = (kor + eng + math)/3.0;
+				students.get(i).setAverage(avg);
+				students.get(i).calcTotAvgGrade();
+				break;
+			} catch (Exception e) {
+				System.out.println("정수를 입력하세요!");
+				sc.nextLine();
+				continue;
+			}
+		}
+		
 
 	}
 
@@ -163,10 +170,10 @@ public class Point {
 		System.out.println(students.get(i).getName() + "님의 정보를 삭제합니다.[Y / N]");
 		System.out.print(">");
 		String ox = sc.next();
-		if(ox.equals("y") || ox.equals("Y") || ox.equals("ㅕ")) {
+		if(ox.toUpperCase().equals("Y")) {
 			students.remove(i);
 			System.out.println("삭제하였습니다.");
-		} else if(ox.equals("n") || ox.equals("N") || ox.equals("ㅜ")) {
+		} else {
 			System.out.println("삭제를 취소합니다.");
 			return;
 		}
@@ -176,7 +183,20 @@ public class Point {
 	public void close() {
 		sc.close();
 	}
-
+	
+	private Student findInstance(String req, List<Student> list) {
+		System.out.printf("%s하실 학생의 학번을 입력하세요.\n"
+				, req);
+		System.out.print(">");
+		String stuNum = sc.next();
+		
+		for(Student stu: list) {
+			if(stuNum.equals(stu.getStuId())) {
+				return stu;
+			}
+		}
+		return null;
+	}
 }
 
 
