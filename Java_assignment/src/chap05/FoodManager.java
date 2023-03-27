@@ -81,6 +81,8 @@ public class FoodManager {
 						System.out.print("수정할 가격: ");
 						int p = sc.nextInt();
 						foods.put(mod, p);
+						System.out.printf("%s의 가격을 %d원으로 변경하였습니다\n"
+								, mod , p);
 					} else {
 						System.out.println("없는 메뉴입니다.");
 					} break;
@@ -89,16 +91,17 @@ public class FoodManager {
 					String rem = sc.next();
 					if(foods.containsKey(rem)) {
 						foods.remove(rem);
-						
+						System.out.println(rem + " 를 삭제하였습니다.");
 					} else {
 						System.out.println("없는 메뉴입니다.");
 					} break;
 				case 3:
+					System.out.println("메인메뉴로 돌아갑니다.");
 					break;
 				default:
 					System.out.println("1,2,3중 하나를 입력하세요!");
+					continue;
 				}
-				continue;
 					
 			} else if(menu == 3) {
 				 /*
@@ -106,13 +109,14 @@ public class FoodManager {
 				   그 이외의 값은 종료 취소를 진행해 주세요.
 				 */
 				System.out.println("프로그램을 종료하시겠습니까?");
-				System.out.print(" Y / N");
+				System.out.print(" Y / N: ");
 				String yn = sc.next();
-				if(yn.equals("Y") || yn.equals("y") || yn.equals("ㅛ")) {
+				if(yn.toUpperCase().equals("Y")) {
 					System.out.println("프로그램을 종료합니다.");
 					break;
-				} continue;
-			
+				} 
+				System.out.println("종료를 취소합니다.");
+				continue;
 				
 			} else {
 				System.out.println("메뉴를 잘못 입력하셨습니다.");
@@ -127,20 +131,3 @@ public class FoodManager {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
